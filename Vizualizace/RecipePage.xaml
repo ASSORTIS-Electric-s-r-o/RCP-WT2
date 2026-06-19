@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="RCP_WT1.Vizualizace.RecipePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:conv="using:RCP_WT1.PomocneTridy"
+    xmlns:local="using:RCP_WT1.Vizualizace"
+    Background="Transparent">
+
+    <Page.Resources>
+        <!-- Převod cesty k obrázku skupiny na ImageSource. Používá se ve dlaždicích skupin receptur. -->
+        <conv:FilePathToImageSourceConverter x:Key="FilePathToImageSourceConverter"/>
+
+        <!-- Stejné rozměry ikon jako v oknech JobPage a SettingPage. -->
+        <x:Double x:Key="NavigationViewItemIconSize">28</x:Double>
+        <x:Double x:Key="NavigationViewItemOnLeftIconBoxWidth">48</x:Double>
+        <x:Double x:Key="NavigationViewItemOnLeftIconBoxHeight">48</x:Double>
+        <Thickness x:Key="NavigationViewItemMargin">0,2,0,2</Thickness>
+
+        <!-- Jednotný styl položek levého NavigationView. -->
+        <Style TargetType="NavigationViewItem">
+            <Setter Property="Height" Value="64"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="0,2"/>
+        </Style>
+
+        <!-- Popisný tlumený text v řádcích tabulky. -->
+        <Style x:Key="MutedTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorSecondaryBrush}"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <!-- Hlavní hodnotový text v tabulce. -->
+        <Style x:Key="ValueTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        </Style>
+    </Page.Resources>
+
+    <!-- Hlavní kořenový Grid je důležitý kvůli informačnímu panelu.
+         NavigationView je první vrstva a InfoToast je druhá vrstva nad ním,
+         proto se informační panel centruje vůči celé stránce, ne jen vůči pravému obsahu. -->
+    <Grid Background="Transparent">
+
+        <!-- Levý navigační panel ve stejném stylu jako JobPage a SettingPage. -->
+        <NavigationView
+            x:Name="RootNav"
+            PaneDisplayMode="Left"
+            IsBackButtonVisible="Collapsed"
+            IsSettingsVisible="False"
+            IsPaneToggleButtonVisible="True"
+            OpenPaneLength="220"
+            CompactPaneLength="80"
+            Background="Transparent">
+
+            <!-- Odstranění výchozích linek a pozadí NavigationView, aby pravá část plynule navazovala na levý panel. -->
+            <NavigationView.Resources>
+                <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent"/>
+                <Thickness x:Key="NavigationViewContentGridBorderThickness">0</Thickness>
+                <SolidColorBrush x:Key="NavigationViewDefaultPaneBackground" Color="Transparent"/>
+                <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="Transparent"/>
+                <SolidColorBrush x:Key="NavigationViewTopPaneBackground" Color="Transparent"/>
+                <SolidColorBrush x:Key="NavigationViewPaneBackground" Color="Transparent"/>
+                <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent"/>
+            </NavigationView.Resources>
+
+            <!-- Horní část levého menu. Obsahuje přihlášení, návrat na skupiny a sloučení receptur. -->
+            <NavigationView.MenuItems>
+
+                <!-- Přihlášení / odhlášení uživatele. Text se mění v RecipePage.xaml.cs podle UserSession. -->
+                <NavigationViewItem
+                    x:Name="BtnLogin"
+                    Tapped="UserPanel_Tapped">
+                    <NavigationViewItem.Icon>
+                        <ImageIcon Source="ms-appx:///Assets/MenuIcons/ic_fluent_people_28_color.svg"/>
+                    </NavigationViewItem.Icon>
+
+                    <StackPanel Spacing="1">
+                        <TextBlock
+                            x:Name="TxtLoginCaption"
+                            Text="Přihlášení"
+                            FontSize="16"
+                            FontWeight="SemiBold"/>
+
+                        <TextBlock
+                            x:Name="TxtLoginUser"
+                            Visibility="Collapsed"
+                            FontSize="11"
+                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                    </StackPanel>
+                </NavigationViewItem>
+
+                <!-- Návrat ze seznamu receptur zpět na dlaždice skupin. Zobrazuje se jen při otevřené skupině. -->
+                <NavigationViewItem
+                    x:Name="BtnBackToGroups"
+                    Content="Skupiny"
+                    Visibility="Collapsed"
+                    Tapped="BtnBackToGroups_Tapped">
+                    <NavigationViewItem.Icon>
+                        <ImageIcon Source="ms-appx:///Assets/MenuIcons/ic_fluent_back_screen_28_color.svg"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <!-- Sloučení více vybraných receptur. Zobrazuje se až po výběru minimálně dvou receptur. -->
+                <NavigationViewItem
+                    x:Name="BtnMergeRecipes"
+                    Content="Sloučit"
+                    Visibility="Collapsed"
+                    Tapped="BtnMergeRecipes_Tapped">
+                    <NavigationViewItem.Icon>
+                        <ImageIcon Source="ms-appx:///Assets/MenuIcons/ic_fluent_org_28_color.svg"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+            </NavigationView.MenuItems>
+
+            <!-- Spodní část levého menu. Obsahuje administraci skupin, receptur, materiálů a návrat zpět. -->
+            <NavigationView.PaneFooter>
+                <Grid
+                    MinWidth="80"
+                    HorizontalAlignment="Stretch"
+                    Margin="0,0,0,10">
+
+                    <StackPanel
+                        HorizontalAlignment="Stretch"
+                        Spacing="6">
+
+                        <!-- Otevření editace skupin receptur. Viditelnost řídí RecipePage.xaml.cs podle práv uživatele. -->
+                        <NavigationViewItem
+                            x:Name="BtnAddGroup"
+                            Content="Skupiny"
+                            Tapped="BtnAddGroup_Tapped">
+                            <NavigationViewItem.Icon>
+                                <ImageIcon Source="ms-appx:///Assets/MenuIcons/ic_fluent_recipe_groups_28_color.svg"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <!-- Otevření editace receptur. -->
+                        <NavigationViewItem
+                            x:Name="BtnAddRecipe"
+                            Content="Receptury"
+                            Tapped="BtnAddRecipe_Tapped">
+                            <NavigationViewItem.Icon>
+                                <ImageIcon Source="ms-appx:///Assets/MenuIcons/ic_fluent_receipt_28_color.svg"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <!-- Otevření editace materiálů. -->
+                        <NavigationViewItem
+                            x:Name="BtnAddMaterial"
+                            Content="Materiály"
+                            Tapped="BtnAddMaterial_Tapped">
+                            <NavigationViewItem.Icon>
+                                <ImageIcon Source="ms-appx:///Assets/MenuIcons/ic_fluent_materials_28_color.svg"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <!-- Návrat na obrazovku zakázek. -->
+                        <NavigationViewItem
+                            x:Name="BtnBack"
+                            Content="Zpět"
+                            Tapped="BtnBack_Tapped">
+                            <NavigationViewItem.Icon>
+                                <ImageIcon Source="ms-appx:///Assets/MenuIcons/ic_fluent_back_screen_28_color.svg"/>
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+
+                        <!-- Logo aplikace ve spodní části levého panelu. -->
+                        <Grid Height="54">
+                            <Image
+                                Source="ms-appx:///Assets/Artos1_logo.png"
+                                Width="42"
+                                Height="42"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Stretch="Uniform"/>
+                        </Grid>
+
+                    </StackPanel>
+                </Grid>
+            </NavigationView.PaneFooter>
+
+            <!-- Pravý obsah stránky. Všechny hlavní části jsou řešené jako karty s jednotným pozadím. -->
+            <Grid Background="Transparent">
+
+                <Grid
+                    Padding="6,18,18,18"
+                    RowSpacing="12"
+                    Background="Transparent">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Horní karta: titulek stránky, popis a vyhledávání receptur. -->
+                    <Border
+                        Grid.Row="0"
+                        CornerRadius="14"
+                        Padding="12"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+
+                        <Grid ColumnSpacing="14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="308"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Název a popis aktuálního režimu stránky. -->
+                            <StackPanel
+                                Grid.Column="0"
+                                Spacing="2"
+                                VerticalAlignment="Center">
+
+                                <TextBlock
+                                    Text="Receptury"
+                                    FontSize="24"
+                                    FontWeight="SemiBold"
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                                <TextBlock
+                                    x:Name="TxtPageDescription"
+                                    Text="Přehled skupin, receptur a materiálů"
+                                    FontSize="13"
+                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                            </StackPanel>
+
+                            <!-- Vyhledávání v seznamu receptur. TextBox zůstává ReadOnly kvůli vlastní dotykové klávesnici. -->
+                            <Grid
+                                Grid.Column="1"
+                                VerticalAlignment="Center"
+                                ColumnSpacing="8">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="40"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox
+                                    x:Name="TxtSearch"
+                                    Grid.Column="0"
+                                    Height="36"
+                                    FontSize="15"
+                                    PlaceholderText="Hledat..."
+                                    IsReadOnly="True"
+                                    TextChanged="TxtSearch_TextChanged"/>
+
+                                <!-- Smazání hledaného textu. -->
+                                <Button
+                                    Grid.Column="1"
+                                    Width="40"
+                                    Height="36"
+                                    Padding="0"
+                                    Click="BtnSearchReset_Click">
+                                    <ImageIcon
+                                        Width="22"
+                                        Height="22"
+                                        Source="ms-appx:///Assets/MenuIcons/ic_fluent_dismiss_circle_28_color.svg"/>
+                                </Button>
+
+                                <!-- Ruční obnovení receptur z databáze. Umístěno vpravo vedle tlačítka pro smazání hledání. -->
+                                <Button
+                                    x:Name="BtnRefresh"
+                                    Grid.Column="2"
+                                    Width="40"
+                                    Height="36"
+                                    Padding="0"
+                                    Click="BtnRefresh_Click">
+                                    <ImageIcon
+                                        Width="24"
+                                        Height="24"
+                                        Source="ms-appx:///Assets/MenuIcons/ic_fluent_refresh_28_color.svg"/>
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Border>
+
+                    <!-- Karta se skupinami receptur. Zobrazuje se, pokud je aktivní režim skupin. -->
+                    <Border
+                        x:Name="GroupsCard"
+                        Grid.Row="1"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        CornerRadius="14"
+                        Padding="12"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+
+                        <Grid RowSpacing="10">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                Grid.Row="0"
+                                Text="Skupiny receptur"
+                                FontSize="20"
+                                FontWeight="SemiBold"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                            <!-- Dlaždice skupin. Velikost dlaždic se počítá v GroupsGrid_SizeChanged. -->
+                            <GridView
+                                x:Name="GroupsGrid"
+                                Grid.Row="1"
+                                ItemsSource="{Binding GroupTiles}"
+                                IsItemClickEnabled="True"
+                                SelectionMode="None"
+                                ItemClick="GroupsGrid_ItemClick"
+                                SizeChanged="GroupsGrid_SizeChanged"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+
+                                <GridView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsWrapGrid
+                                            Orientation="Horizontal"
+                                            MaximumRowsOrColumns="4"/>
+                                    </ItemsPanelTemplate>
+                                </GridView.ItemsPanel>
+
+                                <GridView.ItemContainerStyle>
+                                    <Style TargetType="GridViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Margin" Value="4"/>
+                                        <Setter Property="Padding" Value="0"/>
+                                    </Style>
+                                </GridView.ItemContainerStyle>
+
+                                <GridView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Width="{Binding TileWidth}"
+                                            Height="{Binding TileHeight}"
+                                            Padding="10"
+                                            CornerRadius="14"
+                                            Background="{ThemeResource LayerFillColorDefaultBrush}"
+                                            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                            BorderThickness="1">
+
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <!-- Obrázek skupiny je natažený na maximum dostupného prostoru dlaždice. -->
+                                                <Image
+                                                    Source="{Binding ImagePath, Converter={StaticResource FilePathToImageSourceConverter}}"
+                                                    Stretch="Uniform"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Stretch"
+                                                    Margin="2"/>
+
+                                                <!-- Název skupiny a počet receptur. -->
+                                                <StackPanel
+                                                    Grid.Row="1"
+                                                    Margin="0,8,0,0"
+                                                    Spacing="2">
+
+                                                    <TextBlock
+                                                        Text="{Binding Name}"
+                                                        FontSize="18"
+                                                        FontWeight="SemiBold"
+                                                        TextAlignment="Center"
+                                                        TextTrimming="CharacterEllipsis"
+                                                        Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                                                    <TextBlock
+                                                        Text="{Binding PocetReceptuText}"
+                                                        FontSize="12"
+                                                        TextAlignment="Center"
+                                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                            </GridView>
+
+                        </Grid>
+                    </Border>
+
+                    <!-- Karta se seznamem receptur. Zobrazuje se po výběru skupiny nebo při vypnutém režimu skupin. -->
+                    <Border
+                        x:Name="RecipesCard"
+                        Grid.Row="1"
+                        Visibility="Collapsed"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                        CornerRadius="14"
+                        Padding="12"
+                        BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                        BorderThickness="1">
+
+                        <Grid RowSpacing="8">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                x:Name="TxtTableTitle"
+                                Grid.Row="0"
+                                Text="Receptury"
+                                FontSize="20"
+                                FontWeight="SemiBold"
+                                Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                            <!-- Hlavička seznamu receptur. -->
+                            <Grid
+                                Grid.Row="1"
+                                Padding="10,8"
+                                ColumnSpacing="14"
+                                Background="{ThemeResource LayerFillColorDefaultBrush}">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="80"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock
+                                    Text="Kód receptury"
+                                    FontWeight="SemiBold"
+                                    FontSize="14"
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Text="Název receptury"
+                                    FontWeight="SemiBold"
+                                    FontSize="14"
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+
+                                <TextBlock
+                                    x:Name="ColMergeHeader"
+                                    Grid.Column="2"
+                                    Text="Sloučení"
+                                    FontWeight="SemiBold"
+                                    FontSize="14"
+                                    HorizontalAlignment="Center"
+                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"/>
+                            </Grid>
+
+                            <!-- Seznam receptur. Výběr, dvojklik a Enter zůstávají napojené na původní metody. -->
+                            <ListView
+                                x:Name="RecipesTable"
+                                Grid.Row="2"
+                                SelectionMode="Single"
+                                IsItemClickEnabled="True"
+                                SelectionChanged="RecipesTable_SelectionChanged"
+                                ItemClick="RecipesTable_ItemClick"
+                                KeyDown="RecipesTable_KeyDown"
+                                Background="Transparent"
+                                Padding="0"
+                                Margin="0,2,0,0"
+                                VerticalAlignment="Stretch">
+
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Padding" Value="0"/>
+                                        <Setter Property="Margin" Value="0,0,0,8"/>
+                                        <Setter Property="MinHeight" Value="0"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Padding="10"
+                                            CornerRadius="12"
+                                            Background="{ThemeResource LayerFillColorDefaultBrush}">
+
+                                            <Grid ColumnSpacing="14" MinHeight="40">
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1.2*"/>
+                                                    <ColumnDefinition Width="3*"/>
+                                                    <ColumnDefinition Width="80"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <TextBlock
+                                                    Text="{Binding RecipeCislo}"
+                                                    FontSize="16"
+                                                    FontWeight="SemiBold"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                                    TextTrimming="CharacterEllipsis"/>
+
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    Text="{Binding RecipeName}"
+                                                    FontSize="16"
+                                                    VerticalAlignment="Center"
+                                                    Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                                                    TextTrimming="CharacterEllipsis"/>
+
+                                                <!-- Výběr receptury pro sloučení.
+                                                     Výchozí stav používá ikonu odkazu.
+                                                     Po výběru se ikona v code-behind změní na odeslání. -->
+                                                <Button
+                                                    Grid.Column="2"
+                                                    Width="40"
+                                                    Height="36"
+                                                    Padding="0"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Click="BtnSelectMergeRecipe_Click">
+
+                                                    <Image
+                                                        Width="24"
+                                                        Height="24"
+                                                        Stretch="Uniform"
+                                                        Source="ms-appx:///Assets/MenuIcons/ic_fluent_link_28_color.svg"/>
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </Grid>
+        </NavigationView>
+
+        <!-- Horní vysouvací informační panel.
+             Je mimo NavigationView, proto je zarovnaný na střed celé stránky / okna.
+             Obsah se plní z RecipePage.xaml.cs metodou ZobrazInfoStatus. -->
+        <Border
+            x:Name="InfoToast"
+            Margin="0,12,0,0"
+            Padding="14,12"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Width="560"
+            MaxWidth="560"
+            CornerRadius="18"
+            BorderThickness="1.5"
+            Visibility="Collapsed"
+            Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+            BorderBrush="{ThemeResource AccentFillColorDefaultBrush}">
+
+            <Border.Shadow>
+                <ThemeShadow/>
+            </Border.Shadow>
+
+            <Border.Transitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition
+                        FromHorizontalOffset="0"
+                        FromVerticalOffset="-90"
+                        IsStaggeringEnabled="False"/>
+                </TransitionCollection>
+            </Border.Transitions>
+
+            <Grid ColumnSpacing="14">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Barevná ikona podle typu hlášení. -->
+                <Border
+                    Width="44"
+                    Height="44"
+                    CornerRadius="14"
+                    VerticalAlignment="Center"
+                    Background="{ThemeResource SubtleFillColorSecondaryBrush}">
+
+                    <Image
+                        x:Name="InfoToastIcon"
+                        Width="28"
+                        Height="28"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Stretch="Uniform"
+                        Source="ms-appx:///Assets/MenuIcons/ic_fluent_info_28_color.svg"/>
+                </Border>
+
+                <!-- Text informačního panelu. -->
+                <StackPanel
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Spacing="2">
+
+                    <TextBlock
+                        x:Name="InfoToastTitle"
+                        FontSize="15"
+                        FontWeight="SemiBold"
+                        Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                        TextTrimming="CharacterEllipsis"
+                        Text="Receptury"/>
+
+                    <TextBlock
+                        x:Name="InfoToastMessage"
+                        FontSize="13"
+                        LineHeight="18"
+                        MaxLines="2"
+                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                        TextWrapping="Wrap"
+                        TextTrimming="CharacterEllipsis"
+                        Text=""/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+    </Grid>
+</Page>

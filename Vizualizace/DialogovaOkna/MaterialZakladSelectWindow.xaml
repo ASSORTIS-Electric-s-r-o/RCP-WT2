@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="RCP_WT1.Vizualizace.DialogovaOkna.MaterialZakladSelectWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Výběr položek">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid Padding="18" RowSpacing="12">
+
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Height" Value="46"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="52"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="DragArea" Grid.Row="0" Background="Transparent"/>
+
+        <StackPanel Grid.Row="1" Spacing="4">
+            <TextBlock
+                x:Name="TxtTitle"
+                Text="Výběr položek"
+                FontSize="21"
+                FontWeight="SemiBold"/>
+
+            <TextBlock
+                x:Name="TxtVybrano"
+                Text="Vybráno: 0"
+                FontSize="14"
+                Opacity="0.82"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="240"/>
+                <ColumnDefinition Width="46"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                Text="Vyberte jednu nebo více položek ze seznamu."
+                FontSize="14"
+                TextWrapping="WrapWholeWords"
+                VerticalAlignment="Center"
+                Opacity="0.82"/>
+
+            <Border
+                Grid.Column="1"
+                Height="46"
+                CornerRadius="8"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                Padding="10,0"
+                Tapped="Search_Tapped">
+
+                <Grid>
+                    <TextBlock
+                        x:Name="SearchBox"
+                        FontSize="15"
+                        VerticalAlignment="Center"
+                        TextTrimming="CharacterEllipsis"/>
+
+                    <TextBlock
+                        x:Name="SearchPlaceholder"
+                        Text="Hledat..."
+                        FontSize="15"
+                        Opacity="0.55"
+                        VerticalAlignment="Center"
+                        IsHitTestVisible="False"/>
+                </Grid>
+            </Border>
+
+            <Button
+                Grid.Column="2"
+                Content="×"
+                FontSize="22"
+                Click="SearchReset_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                CornerRadius="8,8,0,0"
+                Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1,1,1,0"
+                Padding="10,0">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="54"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Text="Kód"
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        VerticalAlignment="Center"/>
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Text="Název položky"
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                CornerRadius="0,0,8,8"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1">
+
+                <ListView
+                    x:Name="TableItems"
+                    SelectionMode="None"
+                    IsItemClickEnabled="True"
+                    ItemClick="TableItems_ItemClick">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid MinHeight="38" Padding="10,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="54"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock
+                                    Text="{Binding Kod}"
+                                    FontSize="15"
+                                    VerticalAlignment="Center"/>
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Text="{Binding Name}"
+                                    FontSize="15"
+                                    VerticalAlignment="Center"
+                                    TextTrimming="CharacterEllipsis"/>
+
+                                <TextBlock
+                                    Grid.Column="2"
+                                    Text="{Binding IkonaVyberu}"
+                                    FontSize="22"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="4" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                x:Name="BtnPokracovat"
+                Grid.Column="0"
+                Content="Pokračovat"
+                HorizontalAlignment="Stretch"
+                IsEnabled="False"
+                Click="BtnPokracovat_Click"/>
+
+            <Button
+                Grid.Column="1"
+                Content="Zavřít"
+                HorizontalAlignment="Stretch"
+                Click="BtnZavrit_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>

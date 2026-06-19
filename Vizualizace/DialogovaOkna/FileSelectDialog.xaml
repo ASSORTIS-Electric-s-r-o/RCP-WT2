@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="RCP_WT1.Vizualizace.DialogovaOkna.FileSelectDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Výběr souboru">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid Padding="18" RowSpacing="12">
+
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Height" Value="46"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="52"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="DragArea" Grid.Row="0" Background="Transparent"/>
+
+        <StackPanel Grid.Row="1" Spacing="6">
+            <TextBlock
+                x:Name="PromptTextBlock"
+                Text="Výběr souboru"
+                FontSize="21"
+                FontWeight="SemiBold"
+                TextWrapping="WrapWholeWords"/>
+
+            <TextBlock
+                Text="Vyberte soubor technologického postupu."
+                FontSize="15"
+                TextWrapping="WrapWholeWords"
+                Opacity="0.82"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox
+                x:Name="PathTextBox"
+                Grid.Column="0"
+                Height="46"
+                FontSize="14"
+                IsReadOnly="True"
+                HorizontalAlignment="Stretch"
+                VerticalContentAlignment="Center"
+                PlaceholderText="Soubor není vybraný"/>
+
+            <Button
+                Grid.Column="1"
+                Content="Vybrat"
+                HorizontalAlignment="Stretch"
+                Click="BtnBrowse_Click"/>
+        </Grid>
+
+        <TextBlock
+            Grid.Row="3"
+            Text="Soubor můžete vybrat, smazat, nebo pokračovat bez přiřazeného souboru."
+            FontSize="14"
+            TextWrapping="WrapWholeWords"
+            Opacity="0.72"/>
+
+        <Grid Grid.Row="4" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Column="1"
+                Content="Přeskočit"
+                HorizontalAlignment="Stretch"
+                Click="BtnSkip_Click"/>
+
+            <Button
+                Grid.Column="2"
+                Content="Smazat"
+                HorizontalAlignment="Stretch"
+                Click="BtnClear_Click"/>
+
+            <Button
+                Grid.Column="3"
+                Content="Potvrdit"
+                HorizontalAlignment="Stretch"
+                Click="BtnOk_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="RCP_WT1.Vizualizace.DialogovaOkna.LoginWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Přihlášení">
+
+    <!-- Efekt Mica pro moderní vzhled okna -->
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <!-- Hlavní kontejner okna -->
+    <Grid Padding="18" RowSpacing="12">
+
+        <Grid.Resources>
+
+            <!-- Společný styl pro všechna tlačítka v okně -->
+            <Style TargetType="Button">
+                <Setter Property="Height" Value="46"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+
+        </Grid.Resources>
+
+        <!-- Rozložení okna:
+             0 = přetahovací oblast
+             1 = obsah formuláře
+             2 = tlačítka -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="52"/>
+        </Grid.RowDefinitions>
+
+        <!-- Oblast použitá jako vlastní titulkový pruh -->
+        <Grid
+            x:Name="DragArea"
+            Grid.Row="0"
+            Background="Transparent"/>
+
+        <!-- Hlavní obsah přihlašovacího formuláře -->
+        <StackPanel
+            Grid.Row="1"
+            Spacing="14">
+
+            <!-- Nadpis a popis okna -->
+            <StackPanel Spacing="6">
+
+                <TextBlock
+                    Text="Přihlášení"
+                    FontSize="21"
+                    FontWeight="SemiBold"/>
+
+                <TextBlock
+                    Text="Vyberte operátora a zadejte heslo."
+                    FontSize="15"
+                    TextWrapping="WrapWholeWords"
+                    Opacity="0.82"/>
+
+            </StackPanel>
+
+            <!-- Informační lišta pro chyby a upozornění -->
+            <InfoBar
+                x:Name="InfoStatus"
+                IsOpen="False"
+                FontSize="13"
+                MaxHeight="76"/>
+
+            <!-- Přihlašovací formulář -->
+            <StackPanel Spacing="12">
+
+                <!-- Výběr operátora -->
+                <StackPanel Spacing="6">
+
+                    <TextBlock
+                        Text="Operátor"
+                        FontSize="15"
+                        FontWeight="SemiBold"/>
+
+                    <ComboBox
+                        x:Name="UsernameComboBox"
+                        MinHeight="46"
+                        FontSize="15"
+                        HorizontalAlignment="Stretch"
+                        PlaceholderText="Vyberte operátora"/>
+
+                </StackPanel>
+
+                <!-- Zadání hesla -->
+                <StackPanel Spacing="6">
+
+                    <TextBlock
+                        Text="Heslo"
+                        FontSize="15"
+                        FontWeight="SemiBold"/>
+
+                    <PasswordBox
+                        x:Name="PasswordBox"
+                        MinHeight="46"
+                        FontSize="15"
+                        HorizontalAlignment="Stretch"
+                        PlaceholderText="Zadejte heslo"/>
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </StackPanel>
+
+        <!-- Spodní tlačítka -->
+        <Grid
+            Grid.Row="2"
+            ColumnSpacing="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Zavření okna bez přihlášení -->
+            <Button
+                Grid.Column="0"
+                Content="Zrušit"
+                HorizontalAlignment="Stretch"
+                Click="BtnCancel_Click"/>
+
+            <!-- Pokus o přihlášení -->
+            <Button
+                Grid.Column="1"
+                Content="Přihlásit"
+                HorizontalAlignment="Stretch"
+                Click="BtnLogin_Click"/>
+
+        </Grid>
+
+    </Grid>
+
+</Window>

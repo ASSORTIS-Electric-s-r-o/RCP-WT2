@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="RCP_WT1.Vizualizace.InitWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="RCP-WT1">
+
+    <Grid Background="#F8FAFC">
+
+        <Grid Padding="24">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Levá část -->
+            <Grid Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <TextBlock
+                        Text="RCP-WT1"
+                        FontSize="22"
+                        FontWeight="SemiBold"
+                        Foreground="#111827"/>
+
+                    <TextBlock
+                        Text="Inicializace aplikace"
+                        FontSize="12"
+                        Foreground="#667085"
+                        Margin="0,4,0,0"/>
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Row="1"
+                    VerticalAlignment="Center"
+                    Spacing="8">
+
+                    <TextBlock
+                        x:Name="TxtStatus"
+                        Text="Spouštím aplikaci..."
+                        FontSize="15"
+                        FontWeight="SemiBold"
+                        Foreground="#111827"
+                        TextWrapping="WrapWholeWords"/>
+
+                    <TextBlock
+                        x:Name="TxtDetail"
+                        Text="Připravuji základní prostředí aplikace."
+                        FontSize="12"
+                        Foreground="#667085"
+                        TextWrapping="WrapWholeWords"/>
+
+                </StackPanel>
+
+                <TextBlock
+                    x:Name="TxtCas"
+                    Grid.Row="2"
+                    FontSize="11"
+                    Foreground="#98A2B3"
+                    HorizontalAlignment="Left"/>
+
+            </Grid>
+
+            <!-- Dělicí čára -->
+            <Rectangle
+                Grid.Column="1"
+                Fill="#E5E7EB"
+                Margin="0,18"/>
+
+            <!-- Pravá část -->
+            <Grid Grid.Column="2">
+
+                <Image
+                    Source="ms-appx:///Assets/Artos7.png"
+                    Width="190"
+                    Height="190"
+                    Stretch="Uniform"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

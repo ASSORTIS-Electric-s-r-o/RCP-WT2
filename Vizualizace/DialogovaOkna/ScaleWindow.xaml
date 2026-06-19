@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="RCP_WT1.Vizualizace.DialogovaOkna.ScaleWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Váha">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid Padding="18" RowSpacing="10">
+
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Height" Value="46"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="52"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="DragArea" Grid.Row="0" Background="Transparent"/>
+
+        <StackPanel Grid.Row="1" Spacing="4">
+            <TextBlock Text="Aktuální váha" FontSize="21" FontWeight="SemiBold"/>
+            <TextBlock x:Name="LblStatus" Text="—" FontSize="14" Opacity="0.82"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <TextBlock
+                x:Name="LblWeight"
+                Text="—"
+                FontSize="56"
+                FontWeight="SemiBold"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                TextAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="3" ColumnSpacing="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="BtnWeight1" Grid.Column="0" Content="Váha 1" Tag="0" Height="44" FontSize="14" Click="WeightButton_Click"/>
+            <Button x:Name="BtnWeight2" Grid.Column="1" Content="Váha 2" Tag="1" Height="44" FontSize="14" Click="WeightButton_Click"/>
+            <Button x:Name="BtnWeight3" Grid.Column="2" Content="Váha 3" Tag="2" Height="44" FontSize="14" Click="WeightButton_Click"/>
+            <Button x:Name="BtnWeight4" Grid.Column="3" Content="Váha 4" Tag="3" Height="44" FontSize="14" Click="WeightButton_Click"/>
+            <Button x:Name="BtnWeight5" Grid.Column="4" Content="Váha 5" Tag="4" Height="44" FontSize="14" Click="WeightButton_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="4" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button
+                x:Name="BtnTare"
+                Grid.Column="0"
+                Content="Vynulovat"
+                HorizontalAlignment="Stretch"
+                Click="BtnTare_Click"/>
+
+            <Button
+                Grid.Column="1"
+                Content="Zavřít"
+                HorizontalAlignment="Stretch"
+                Click="BtnClose_Click"/>
+        </Grid>
+
+    </Grid>
+</Window>
