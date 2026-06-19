@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RCP_WT1 (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "RCP_WT1 (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
