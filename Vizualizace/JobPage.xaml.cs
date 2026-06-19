@@ -71,7 +71,7 @@ namespace RCP_WT1.Vizualizace
         }
 
         // ==========================================
-        // Stav přihlášení pro testovací obrazovku
+        // Stav přihlášení pro testovací obrazovku1
         // ==========================================
         private bool _operatorPrihlasen = false;
         private string _operatorJmeno = "";
