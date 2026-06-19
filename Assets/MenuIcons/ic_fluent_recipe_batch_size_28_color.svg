@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="28"
+     height="28"
+     viewBox="0 0 28 28">
+
+    <defs>
+        <linearGradient id="doc" x1="5" y1="4" x2="22" y2="24">
+            <stop offset="0" stop-color="#60A5FA"/>
+            <stop offset="1" stop-color="#2563EB"/>
+        </linearGradient>
+
+        <linearGradient id="badge" x1="12" y1="12" x2="24" y2="24">
+            <stop offset="0" stop-color="#FBBF24"/>
+            <stop offset="1" stop-color="#F97316"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Receptura -->
+    <rect x="5" y="4" width="14" height="20" rx="3" fill="url(#doc)"/>
+
+    <rect x="8" y="8" width="8" height="1.2" rx="0.6" fill="#DBEAFE"/>
+    <rect x="8" y="11" width="6.5" height="1.2" rx="0.6" fill="#DBEAFE"/>
+    <rect x="8" y="14" width="5" height="1.2" rx="0.6" fill="#DBEAFE"/>
+
+    <!-- Velikost dávky -->
+    <circle cx="19.5" cy="19.5" r="6.2" fill="url(#badge)"/>
+
+    <!-- Číslo 25 je kreslené čarami, není použité <text>. -->
+    <g fill="none" stroke="white" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 2 -->
+        <path d="M16.15 16.0 H18.25 V17.35 H16.15 V18.7 H18.35"/>
+        <!-- 5 -->
+        <path d="M19.45 16.0 H21.55 H19.45 V17.35 H21.45 V18.7 H19.35"/>
+    </g>
+
+    <!-- KG je kreslené čarami, není použité <text>. -->
+    <g fill="none" stroke="white" stroke-width="0.65" stroke-linecap="round" stroke-linejoin="round">
+        <!-- K -->
+        <path d="M16.45 20.55 V22.75"/>
+        <path d="M18.05 20.55 L16.7 21.65 L18.05 22.75"/>
+        <!-- G -->
+        <path d="M21.85 20.85 C21.35 20.45 20.25 20.45 19.75 20.95 C19.15 21.55 19.2 22.25 19.75 22.65 C20.35 23.1 21.35 22.95 21.85 22.55 V21.85 H20.85"/>
+    </g>
+</svg>

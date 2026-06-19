@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28" height="28" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+  <!-- databázový válec -->
+  <ellipse cx="14" cy="6.5" rx="9" ry="3.5" fill="#5B9BD5"/>
+  <path d="M5 6.5 V20.5 C5 22.4 9 24 14 24 C19 24 23 22.4 23 20.5 V6.5"
+        fill="#4A90E2"/>
+  <ellipse cx="14" cy="20.5" rx="9" ry="3.5" fill="#2F6FB0"/>
+
+  <!-- vrstvy databáze -->
+  <path d="M5 11 C5 12.9 9 14.5 14 14.5 C19 14.5 23 12.9 23 11"
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="1.4"
+        stroke-linecap="round"
+        opacity="0.95"/>
+
+  <path d="M5 15.7 C5 17.6 9 19.2 14 19.2 C19 19.2 23 17.6 23 15.7"
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="1.4"
+        stroke-linecap="round"
+        opacity="0.95"/>
+
+  <!-- horní světlo -->
+  <ellipse cx="14" cy="6.5" rx="6.8" ry="2.1" fill="#8CC7F3"/>
+</svg>

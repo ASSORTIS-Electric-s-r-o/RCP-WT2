@@ -1,0 +1,17 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Průhledné pozadí: není zde žádný podkladový obdélník ani výplň vnitřku kruhu. -->
+  <defs>
+    <linearGradient id="blueGradient" x1="5" y1="4" x2="23" y2="24" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#35A9FF"/>
+      <stop offset="0.55" stop-color="#178BFF"/>
+      <stop offset="1" stop-color="#0067E6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Modrý kruhový obrys, vnitřek zůstává průhledný. -->
+  <circle cx="14" cy="14" r="10.8" stroke="url(#blueGradient)" stroke-width="2.7"/>
+
+  <!-- Modrý vykřičník. -->
+  <rect x="12.65" y="7.2" width="2.7" height="10.1" rx="1.35" fill="url(#blueGradient)"/>
+  <circle cx="14" cy="20.55" r="1.45" fill="url(#blueGradient)"/>
+</svg>

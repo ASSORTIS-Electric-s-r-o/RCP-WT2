@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="28"
+   height="28"
+   viewBox="0 0 28 28"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="ic_fluent_recipe_varky_28_color.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="27.535714"
+     inkscape:cx="13.981842"
+     inkscape:cy="14"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <defs
+     id="defs4">
+    <linearGradient
+       id="doc"
+       x1="5"
+       y1="4"
+       x2="22"
+       y2="24">
+      <stop
+         offset="0"
+         stop-color="#60A5FA"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#2563EB"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="badge"
+       x1="12"
+       y1="12"
+       x2="24"
+       y2="24">
+      <stop
+         offset="0"
+         stop-color="#FBBF24"
+         id="stop3" />
+      <stop
+         offset="1"
+         stop-color="#F97316"
+         id="stop4" />
+    </linearGradient>
+  </defs>
+  <!-- Receptura -->
+  <rect
+     x="5"
+     y="4"
+     width="14"
+     height="20"
+     rx="3"
+     fill="url(#doc)"
+     id="rect4" />
+  <rect
+     x="8"
+     y="8"
+     width="8"
+     height="1.2"
+     rx="0.6"
+     fill="#DBEAFE"
+     id="rect5" />
+  <rect
+     x="8"
+     y="11"
+     width="6.5"
+     height="1.2"
+     rx="0.6"
+     fill="#DBEAFE"
+     id="rect6" />
+  <rect
+     x="8"
+     y="14"
+     width="5"
+     height="1.2"
+     rx="0.6"
+     fill="#DBEAFE"
+     id="rect7" />
+  <!-- Velikost dávky -->
+  <circle
+     cx="19.5"
+     cy="19.5"
+     r="6.2"
+     fill="url(#badge)"
+     id="circle7" />
+  <text
+     x="19.5"
+     y="18.200001"
+     text-anchor="middle"
+     font-family="'Segoe UI', Arial"
+     font-size="4.3px"
+     font-weight="700"
+     fill="#ffffff"
+     id="text7">5</text>
+  <text
+     x="19.5"
+     y="22.299999"
+     text-anchor="middle"
+     font-family="'Segoe UI', Arial"
+     font-size="3.4px"
+     font-weight="700"
+     fill="#ffffff"
+     id="text8">X</text>
+</svg>

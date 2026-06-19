@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="28" height="28" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="documentGradient" x1="6" y1="4" x2="22" y2="24" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#93C5FD"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="clipGradient" x1="9" y1="3" x2="19" y2="9" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FDBA74"/>
+      <stop offset="1" stop-color="#F97316"/>
+    </linearGradient>
+    <linearGradient id="pauseGradient" x1="16" y1="15" x2="26" y2="25" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FDE68A"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Výrobní zakázka / pracovní list -->
+  <rect x="6" y="5" width="16" height="19" rx="3" fill="url(#documentGradient)"/>
+
+  <!-- Horní klip -->
+  <path d="M11 4.2 H17 C17.85 4.2 18.5 4.85 18.5 5.7 V7.7 H9.5 V5.7 C9.5 4.85 10.15 4.2 11 4.2Z" fill="url(#clipGradient)"/>
+  <rect x="12" y="3" width="4" height="2.4" rx="1.2" fill="#FED7AA"/>
+
+  <!-- Řádky zakázky -->
+  <rect x="9" y="10" width="10" height="1.3" rx="0.65" fill="#DBEAFE"/>
+  <rect x="9" y="13" width="8" height="1.3" rx="0.65" fill="#DBEAFE"/>
+  <rect x="9" y="16" width="6" height="1.3" rx="0.65" fill="#DBEAFE"/>
+
+  <!-- Pozastavení zakázky: oranžový odznak s pause symbolem -->
+  <circle cx="20.5" cy="20.5" r="6.6" fill="#FFFFFF" filter="url(#softShadow)"/>
+  <circle cx="20.5" cy="20.5" r="5.6" fill="url(#pauseGradient)"/>
+  <rect x="18.15" y="17.45" width="1.65" height="6.1" rx="0.65" fill="#FFFFFF"/>
+  <rect x="21.2" y="17.45" width="1.65" height="6.1" rx="0.65" fill="#FFFFFF"/>
+</svg>

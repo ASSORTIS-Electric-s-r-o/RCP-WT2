@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="28"
+   height="28"
+   viewBox="0 0 28 28"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="ic_fluent_delete_28_color.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="27.535714"
+     inkscape:cx="13.981842"
+     inkscape:cy="14"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <defs
+     id="defs4">
+    <linearGradient
+       id="deleteGradient"
+       x1="6"
+       y1="5"
+       x2="22"
+       y2="23"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.4047773,0,0,1,-5.7239516,0)">
+      <stop
+         offset="0"
+         stop-color="#FB7185"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#DC2626"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="lidGradient"
+       x1="8"
+       y1="4"
+       x2="20"
+       y2="8"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.3964548,0,0,1,-5.7864245,0.54474708)">
+      <stop
+         offset="0"
+         stop-color="#FCA5A5"
+         id="stop3" />
+      <stop
+         offset="1"
+         stop-color="#EF4444"
+         id="stop4" />
+    </linearGradient>
+  </defs>
+  <!-- Víko -->
+  <rect
+     x="5.3852143"
+     y="5.5447469"
+     width="16.757458"
+     height="2.5"
+     rx="1.6757458"
+     fill="url(#lidGradient)"
+     id="rect4"
+     style="fill:url(#lidGradient);stroke-width:1.18172" />
+  <!-- Rukojeť -->
+  <rect
+     x="10.89105"
+     y="3.9536965"
+     width="6"
+     height="1.8"
+     rx="0.89999998"
+     fill="#f87171"
+     id="rect5" />
+  <!-- Koš -->
+  <path
+     d="m 7.2,8 h 13.485863 l -1.123822,14 c -0.07024,0.9 -1.053583,1.6 -2.317883,1.6 H 10.641704 C 9.377405,23.6 8.394061,22.9 8.323822,22 Z"
+     fill="url(#deleteGradient)"
+     id="path5"
+     style="fill:url(#deleteGradient);stroke-width:1.18523" />
+  <!-- Vnitřní proužky -->
+  <rect
+     x="11.2"
+     y="12.2"
+     width="1.2"
+     height="9.1999998"
+     rx="0.60000002"
+     fill="#fecaca"
+     id="rect6" />
+  <rect
+     x="13.4"
+     y="12.2"
+     width="1.2"
+     height="9.1999998"
+     rx="0.60000002"
+     fill="#fecaca"
+     id="rect7" />
+  <rect
+     x="15.6"
+     y="12.2"
+     width="1.2"
+     height="9.1999998"
+     rx="0.60000002"
+     fill="#fecaca"
+     id="rect8" />
+</svg>

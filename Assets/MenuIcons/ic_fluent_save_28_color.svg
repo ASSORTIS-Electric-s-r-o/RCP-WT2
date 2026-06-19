@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="28"
+     height="28"
+     viewBox="0 0 28 28">
+
+    <defs>
+        <linearGradient id="diskBody" x1="5" y1="3.5" x2="24" y2="25">
+            <stop offset="0" stop-color="#60A5FA"/>
+            <stop offset="1" stop-color="#2563EB"/>
+        </linearGradient>
+
+        <linearGradient id="diskTop" x1="8" y1="5" x2="20" y2="12">
+            <stop offset="0" stop-color="#DBEAFE"/>
+            <stop offset="1" stop-color="#93C5FD"/>
+        </linearGradient>
+
+        <linearGradient id="label" x1="9" y1="15" x2="20" y2="24">
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset="1" stop-color="#DBEAFE"/>
+        </linearGradient>
+
+        <linearGradient id="slot" x1="16" y1="5" x2="20" y2="11">
+            <stop offset="0" stop-color="#334155"/>
+            <stop offset="1" stop-color="#1E293B"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Tělo diskety -->
+    <path d="M6 4.5C6 3.67 6.67 3 7.5 3H18.35C18.75 3 19.14 3.16 19.42 3.44L24.56 8.58C24.84 8.86 25 9.25 25 9.65V23.5C25 24.33 24.33 25 23.5 25H7.5C6.67 25 6 24.33 6 23.5V4.5Z"
+          fill="url(#diskBody)"/>
+
+    <!-- Horní uložená část -->
+    <path d="M9 5H18.15C18.42 5 18.67 5.11 18.86 5.29L21 7.44V11.2C21 11.64 20.64 12 20.2 12H9.8C9.36 12 9 11.64 9 11.2V5Z"
+          fill="url(#diskTop)"/>
+
+    <!-- Tmavý zápisový otvor -->
+    <rect x="16.6" y="5.7" width="2.8" height="5.1" rx="0.7" fill="url(#slot)" opacity="0.95"/>
+
+    <!-- Spodní štítek -->
+    <rect x="9" y="15" width="13" height="8" rx="1.6" fill="url(#label)"/>
+
+    <!-- Čáry na štítku jsou kreslené tvary, bez textu -->
+    <rect x="11" y="17" width="8.5" height="1.1" rx="0.55" fill="#93C5FD"/>
+    <rect x="11" y="19.5" width="6.5" height="1.1" rx="0.55" fill="#93C5FD"/>
+
+    <!-- Jemný lesk -->
+    <path d="M7.4 5.3C7.4 4.86 7.76 4.5 8.2 4.5H13.8C14.24 4.5 14.6 4.86 14.6 5.3V5.6C14.6 6.04 14.24 6.4 13.8 6.4H8.2C7.76 6.4 7.4 6.04 7.4 5.6V5.3Z"
+          fill="#BFDBFE" opacity="0.55"/>
+</svg>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="28"
+    height="28"
+    viewBox="0 0 28 28">
+
+    <defs>
+        <linearGradient id="editGradient" x1="6" y1="6" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#60A5FA"/>
+            <stop offset="1" stop-color="#2563EB"/>
+        </linearGradient>
+
+        <linearGradient id="tipGradient" x1="17" y1="7" x2="23" y2="13" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#FDE68A"/>
+            <stop offset="1" stop-color="#F59E0B"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Tužka -->
+    <path
+        d="M18.9 5.6
+           C19.8 4.7 21.25 4.7 22.15 5.6
+           L22.45 5.9
+           C23.35 6.8 23.35 8.25 22.45 9.15
+           L12.0 19.6
+           L7.4 20.6
+           C6.8 20.75 6.25 20.2 6.4 19.6
+           L7.4 15.0
+           Z"
+        fill="url(#editGradient)"/>
+
+    <!-- Hrot tužky -->
+    <path
+        d="M18.9 5.6
+           L22.45 9.15
+           L20.55 11.05
+           L17.0 7.5
+           Z"
+        fill="url(#tipGradient)"/>
+
+    <!-- Linka editace -->
+    <rect
+        x="5"
+        y="22"
+        width="12"
+        height="1.8"
+        rx="0.9"
+        fill="#93C5FD"/>
+</svg>

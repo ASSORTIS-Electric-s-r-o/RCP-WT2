@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="28"
+   height="28"
+   viewBox="0 0 28 28"
+   version="1.1"
+   id="svg9"
+   sodipodi:docname="ic_fluent_recipe_groups_28_color.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview9"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="27.535714"
+     inkscape:cx="13.981842"
+     inkscape:cy="14"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg9" />
+  <defs
+     id="defs6">
+    <linearGradient
+       id="folderGradient"
+       x1="4"
+       y1="6"
+       x2="24"
+       y2="23"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#FDBA74"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#F97316"
+         id="stop2" />
+    </linearGradient>
+    <linearGradient
+       id="cardGradient"
+       x1="8"
+       y1="10"
+       x2="22"
+       y2="21"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#60A5FA"
+         id="stop3" />
+      <stop
+         offset="1"
+         stop-color="#2563EB"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       id="breadGradient"
+       x1="10"
+       y1="12"
+       x2="19"
+       y2="19"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.85123373,0,0,0.6692607,4.0827591,7.1387808)">
+      <stop
+         offset="0"
+         stop-color="#FDE68A"
+         id="stop5" />
+      <stop
+         offset="1"
+         stop-color="#D97706"
+         id="stop6" />
+    </linearGradient>
+  </defs>
+  <!-- Průhledné pozadí -->
+  <!-- Zadní složka pro skupiny -->
+  <path
+     d="M4.5 8.5            C4.5 7.4 5.4 6.5 6.5 6.5            H11.1            C11.8 6.5 12.45 6.86 12.82 7.45            L13.55 8.6            H21.5            C22.6 8.6 23.5 9.5 23.5 10.6            V20.5            C23.5 21.6 22.6 22.5 21.5 22.5            H6.5            C5.4 22.5 4.5 21.6 4.5 20.5Z"
+     fill="url(#folderGradient)"
+     opacity="0.98"
+     id="path6" />
+  <!-- Karta receptury uvnitř skupiny -->
+  <rect
+     x="8"
+     y="10.5"
+     width="13"
+     height="9.5"
+     rx="2"
+     fill="url(#cardGradient)"
+     opacity="0.95"
+     id="rect6" />
+  <!-- Malý symbol pečiva / receptury -->
+  <path
+     d="m 13.105837,18.315435 c 0,-1.505837 1.574782,-2.610117 3.362373,-2.610117 2.042961,0 3.702867,1.171206 3.702867,2.610117 0,0.635797 -0.638425,1.137743 -1.447097,1.137743 h -4.171046 c -0.808672,0 -1.447097,-0.501946 -1.447097,-1.137743 z"
+     fill="url(#breadGradient)"
+     id="path7"
+     style="fill:url(#breadGradient);stroke-width:0.754783" />
+  <!-- Záře / řezy na pečivu -->
+  <path
+     d="m 15.036672,17.226109 c 0.180187,0.306763 0.180187,0.613526 0,0.920289 m 1.441497,-1.042994 c 0.216224,0.337439 0.216224,0.736231 0,1.104347 m 1.441496,-0.858937 c 0.180187,0.276087 0.180187,0.58285 0,0.858937"
+     fill="none"
+     stroke="#fff7ed"
+     stroke-width="0.565233"
+     stroke-linecap="round"
+     opacity="0.95"
+     id="path8" />
+  <!-- Čáry symbolizující položky ve skupině receptů -->
+  <rect
+     x="10"
+     y="11.9"
+     width="5.2"
+     height="0.9"
+     rx="0.45"
+     fill="#DBEAFE"
+     opacity="0.95"
+     id="rect8" />
+  <rect
+     x="10"
+     y="20.9"
+     width="9.2"
+     height="1.0"
+     rx="0.5"
+     fill="#FED7AA"
+     opacity="0.9"
+     id="rect9" />
+</svg>

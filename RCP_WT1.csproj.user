@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <UapAppxPackageBuildMode>SideloadOnly</UapAppxPackageBuildMode>
+    <AppxShowAllApps>False</AppxShowAllApps>
+    <AppxBuildConfigurationSelection>x86|x64</AppxBuildConfigurationSelection>
+    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+    <AppIconSource>C:\Users\nemec\ASSORTIS Electric s.r.o\ARTOS - SW\RCP\WT1\VisualStudio\Verze_03_WinUI\RCP_WT1\Assets\Artos1_logo.png</AppIconSource>
+    <_LastSelectedProfileId>C:\Users\nemec\ASSORTIS Electric s.r.o\ARTOS - SW\RCP\WT1\VisualStudio\Verze_03_WinUI\RCP_WT1\Properties\PublishProfiles\win-x64.pubxml</_LastSelectedProfileId>
+    <ActiveDebugProfile>RCP_WT1 (Unpackaged)</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Update="App.xaml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </None>
+    <Page Update="Vizualizace\DialogovaOkna\ImageSelectDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\DialogovaOkna\MegeRecipesWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\SumarizationPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\DialogovaOkna\InfoWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\RecipeActualPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\RecipeDetailPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\DialogovaOkna\MaterialZakladSelectWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\DialogovaOkna\FileSelectDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\RecipePreSelectPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\RecipeEditPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\RecipePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\DialogovaOkna\ScaleWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\DialogovaOkna\ConfirmWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\DialogovaOkna\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\InitWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\DialogovaOkna\UsersWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\Klavesnice\VirtualKeyboard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\SettingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\JobPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vizualizace\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

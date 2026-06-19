@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="28"
+   height="28"
+   viewBox="0 0 28 28"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="ic_fluent_scale_display_28_color.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="27.535714"
+     inkscape:cx="13.981842"
+     inkscape:cy="14"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg3" />
+  <!-- tělo váhy -->
+  <rect
+     x="4"
+     y="4"
+     width="20"
+     height="20"
+     rx="4"
+     fill="#5B9BD5"
+     id="rect1"
+     style="fill:#e9755d;fill-opacity:1" />
+  <!-- horní displej -->
+  <rect
+     x="7"
+     y="7"
+     width="14"
+     height="7"
+     rx="1.5"
+     fill="#EAF6FF"
+     id="rect2" />
+  <text
+     x="14"
+     y="12.3"
+     text-anchor="middle"
+     font-family="Segoe UI, Arial, sans-serif"
+     font-size="4.7"
+     font-weight="700"
+     fill="#1F5F99"
+     id="text2">12.5</text>
+  <!-- plocha váhy -->
+  <!-- jemné zvýraznění -->
+  <path
+     d="m 8,4 h 12 c 2.2,0 4,1.6431128 4,3.6513619 V 8.5642023 H 4 V 7.6513619 C 4,5.6431128 5.8,4 8,4 Z"
+     fill="#7db7ea"
+     opacity="0.55"
+     id="path3"
+     style="stroke-width:0.955427" />
+  <rect
+     x="7"
+     y="7"
+     width="14"
+     height="7"
+     rx="1.5"
+     fill="#EAF6FF"
+     id="rect3" />
+  <rect
+     x="7"
+     y="7"
+     width="14"
+     height="7"
+     rx="1.5"
+     fill="#EAF6FF"
+     id="rect4" />
+  <rect
+     x="7"
+     y="7"
+     width="14"
+     height="7"
+     rx="1.5"
+     fill="#EAF6FF"
+     id="rect5" />
+  <text
+     x="14"
+     y="12.3"
+     text-anchor="middle"
+     font-family="'Segoe UI', Arial, sans-serif"
+     font-size="4.7px"
+     font-weight="700"
+     fill="#1f5f99"
+     id="text5">12.5<tspan
+   style="font-size:2.66667px"
+   id="tspan7">kg</tspan></text>
+</svg>
